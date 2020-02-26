@@ -15,5 +15,13 @@ class Neighborhood(models.Model):
   health = models.TextField(max_length = 200)
   police = models.TextField(max_length = 200)
 
+class Post(models.Model):
+  profile = models.ForeignKey(Profile, null = True, blank = True)
+  image = models.ImageField(upload_to='post_pics')
+  posted_on = models.DateTimeField(auto_now_add=True,null = True)
+  body = models.TextField(max_length = 200)
+
+
+
 
 
