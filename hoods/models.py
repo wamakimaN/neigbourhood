@@ -21,7 +21,10 @@ class Post(models.Model):
   posted_on = models.DateTimeField(auto_now_add=True,null = True)
   body = models.TextField(max_length = 200)
 
-
+class Business(models.Model):
+  neighbor = models.ForeignKey(Neighborhood, null = True, blank = True)
+  name = models.TextField(max_length = 100, blank = True)
+  
 
 
 
