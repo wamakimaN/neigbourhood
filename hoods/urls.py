@@ -1,8 +1,10 @@
 from hoods import views
 from django.conf.urls import url
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-  url(r'^$', views.home_page, name='homePage'),
+  url(r'^$', views.home_page, name='home'),
+  url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
   url(r'^signup/$',views.registration, name='signup'),
 ]
