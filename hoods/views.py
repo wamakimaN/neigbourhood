@@ -4,6 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import  Profile, Post, Business, Neighborhood
 
 # Create your views here.
+def home_page(request):
+    title = 'Welcome'
+    return render(request, 'home.html', {"title": title})
 
 def registration(request):
   form = UserCreationForm()
