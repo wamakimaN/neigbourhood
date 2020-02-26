@@ -3,15 +3,16 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Neighborhood(models.Model):
-  name = models.TextField(max_length = 100, blank = True)
-  health = models.TextField(max_length = 200)
-  police = models.TextField(max_length = 200)
+  name = models.CharField(max_length = 100, blank = True)
+  health = models.CharField(max_length = 200)
+  police = models.CharField(max_length = 200)
   
 class Business(models.Model):
   neighbor = models.ForeignKey(Neighborhood, null = True, blank = True)
   name = models.TextField(max_length = 100, blank = True)
 
 class Profile(models.Model):
+  neighbor = models.ForeignKey(Neighborhood, null = True, blank = True)
   user = models.OneToOneField(User, on_delete = models.CASCADE)
   bio = models.TextField(max_length = 100, blank = True)
   profile_pic = models.ImageField(default= 'default.jpg', upload_to='profile_pics')
