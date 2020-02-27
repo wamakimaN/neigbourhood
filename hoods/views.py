@@ -2,12 +2,17 @@ from django.shortcuts import render,reverse,get_object_or_404
 from django.views import View
 from django.views.generic import ListView
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from .models import  Profile, Post, Business, Neighborhood
 
 # Create your views here.
 def home_page(request):
     title = 'Welcome'
     return render(request, 'home.html', {"title": title})
+
+@login_required
+def profile(request):
+    return render(request, 'profile.html')
 
 def registration(request):
   form = UserCreationForm()
