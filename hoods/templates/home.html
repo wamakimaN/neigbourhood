@@ -1,4 +1,12 @@
-<h1>This is my landing</h1>
-<a class="dropdown-item" href="">hood</a>
-
-{{user.profile.neighbor.pk}}
+{%extends 'base.html'%}
+{%block content%}
+<div class="container-fluid home">
+  <div class="row">
+    <div class="column">
+      <a href="{%url 'signup'%}"><button class="btn purple-gradient" >Create Account</button></a>
+      <p class="btns" style="color: blueviolet;">-or-</p>
+      <a href="{%url 'login'%}"><button  class="btn purple-gradient">Log In</button></a>
+    </div>
+  </div>
+  </div>
+{%endblock%}
