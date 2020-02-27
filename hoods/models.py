@@ -7,6 +7,9 @@ class Neighborhood(models.Model):
   health = models.CharField(max_length = 200)
   police = models.CharField(max_length = 200)
   
+  def __str__(self):
+    return f'{self.name}'
+
 class Business(models.Model):
   neighbor = models.ForeignKey(Neighborhood, null = True, blank = True)
   name = models.TextField(max_length = 100, blank = True)
@@ -21,6 +24,7 @@ class Profile(models.Model):
     return f'{self.user.username} Profile'
 
 class Post(models.Model):
+  neighbor = models.ForeignKey(Neighborhood, null = True, blank = True)
   profile = models.ForeignKey(Profile, null = True, blank = True)
   image = models.ImageField(upload_to='post_pics')
   posted_on = models.DateTimeField(auto_now_add=True,null = True)

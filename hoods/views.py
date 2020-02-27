@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,reverse,get_object_or_404
 from django.views import View
+from django.views.generic import ListView
 from django.contrib.auth.forms import UserCreationForm
 from .models import  Profile, Post, Business, Neighborhood
 
@@ -18,3 +19,16 @@ def registration(request):
 
   context = {'form':form}
   return render(request, 'signup.html', context)
+
+class PostHood(ListView):
+  model = Post
+  template_name = 'hood.html'
+
+  def get_queryset(self):
+    self.neighbor = get_object_or_404(Neighborhood,pk=self.kwargs['pk'])
+    return Post.objects.filter(neighbor=self.neighbor)
+
+  def get_context_data(self,**kwargs):
+    context = super(PostHood, self).get_context_data(**kwargs)
+    context['neighbor'] = self.neighbor
+    return context
