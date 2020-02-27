@@ -26,7 +26,7 @@ class Profile(models.Model):
 class Post(models.Model):
   neighbor = models.ForeignKey(Neighborhood, null = True, blank = True)
   profile = models.ForeignKey(Profile, null = True, blank = True)
-  image = models.ImageField(upload_to='post_pics')
+  image = models.ImageField(upload_to='post_pics',null = True,blank = True)
   posted_on = models.DateTimeField(auto_now_add=True,null = True)
   body = models.TextField(max_length = 200)
 
